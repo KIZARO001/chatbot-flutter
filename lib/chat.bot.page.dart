@@ -40,6 +40,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
             color: Theme.of(context).indicatorColor,
           ),
         ),
+        centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Column(

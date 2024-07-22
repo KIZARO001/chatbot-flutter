@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(primaryColor: Colors.blue, indicatorColor: Colors.white),
+       debugShowCheckedModeBanner: false,
       title: 'ChatBot Asraoui',
       home: HomePage(),
       routes: {"/chat": (context) => ChatBotPage()},
@@ -39,6 +40,7 @@ class _HomePageState extends State<HomePage> {
             color: Theme.of(context).indicatorColor,
           ),
         ),
+        centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Center(
@@ -70,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                   TextField(
                     controller: titleController,
                     decoration: InputDecoration(
-                      hintText: "Enter conversation title (optional)",
+                      hintText: "Enter conversation title",
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
                           width: 1,
@@ -99,13 +101,12 @@ class _HomePageState extends State<HomePage> {
                       textStyle: TextStyle(fontSize: 16),
                     ),
                     onPressed: () {
-                      Navigator.of(context).pop();
                       Navigator.pushNamed(
                         context,
                         "/chat",
-                        arguments: titleController.text.isEmpty
-                            ? {"title": "New conversation"}
-                            : {"title": titleController.text},
+                          arguments: titleController.text.isEmpty
+                        ? {"title": "New conversation"}
+                        : {"title": titleController.text},
                       );
                     },
                   ),
